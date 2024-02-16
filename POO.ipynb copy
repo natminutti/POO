@@ -1,0 +1,1113 @@
+{
+  "cells": [
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "GzgxmEWkrHQc"
+      },
+      "source": [
+        "# Clases, herencia y polimorfismos"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "XaYv_1XqrHQd"
+      },
+      "source": [
+        "## Definiciones"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "rFg5Mu_xrHQd"
+      },
+      "source": [
+        "Las definiciones se crean de íntegramente (built-in) en Python. El método es `def`"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "mFO_o8jWrHQe"
+      },
+      "source": [
+        "Imaginemos que queremos crear una función global que salude a cierta persona."
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "id": "nLcdmD7brHQe"
+      },
+      "outputs": [],
+      "source": [
+        "def Hola( ):  #Cada definicion acaba con un return\n",
+        "    x = \"Hola!\"\n",
+        "    return x"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "id": "rBPwCesDrHQe",
+        "outputId": "8c74be00-0b87-4bb9-d106-a5887a762c88"
+      },
+      "outputs": [
+        {
+          "data": {
+            "text/plain": [
+              "'Hola!'"
+            ]
+          },
+          "execution_count": 2,
+          "metadata": {},
+          "output_type": "execute_result"
+        }
+      ],
+      "source": [
+        "Hola( ) #Parentesis es para que me imprima mi función"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "id": "8Bbn7tfbrHQf"
+      },
+      "outputs": [],
+      "source": [
+        "def Hi():\n",
+        "    print(\"Hi!\")"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "id": "VyqR7A_frHQf",
+        "outputId": "ea77b0c2-1eeb-431b-a3f5-efeca896b772"
+      },
+      "outputs": [
+        {
+          "name": "stdout",
+          "output_type": "stream",
+          "text": [
+            "Hi!\n"
+          ]
+        }
+      ],
+      "source": [
+        "Hi()"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "id": "_V34ZAcXrHQf"
+      },
+      "outputs": [],
+      "source": [
+        "# Podemos crear una función que haga la concatenación de dos listas\n",
+        "\n",
+        "def conc(L,M):   #Vamos a crear una lista y le vamos a pedir que nos una los elementos\n",
+        "    x = L+M\n",
+        "    return x"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "id": "OxiWaUporHQf",
+        "outputId": "fff0e1ac-adae-4847-848f-a6df40f448e1"
+      },
+      "outputs": [
+        {
+          "data": {
+            "text/plain": [
+              "5"
+            ]
+          },
+          "execution_count": 6,
+          "metadata": {},
+          "output_type": "execute_result"
+        }
+      ],
+      "source": [
+        "conc(3,2) #Se suman porque a x le pedimos una suma y solo es un elemento"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "id": "Ky25Smw2rHQf"
+      },
+      "outputs": [],
+      "source": [
+        "L = [1,2]\n",
+        "M = [3,4]"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "id": "15Z72cVHrHQg",
+        "outputId": "107b2446-6fb3-496d-ab6b-502ff9498d11"
+      },
+      "outputs": [
+        {
+          "data": {
+            "text/plain": [
+              "[1, 2, 3, 4]"
+            ]
+          },
+          "execution_count": 8,
+          "metadata": {},
+          "output_type": "execute_result"
+        }
+      ],
+      "source": [
+        "conc(L,M) #se concatenan los elementos, se unen la listas en orden"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "id": "8uOD9nHkrHQg"
+      },
+      "outputs": [],
+      "source": [
+        "# Crear una definición que sume entrada dos listas\n",
+        "\n",
+        "def suma_vectores(v, w):\n",
+        "    x = [v[i]+w[i] for i in range(0,3)] #rango conjunto indices,\n",
+        "    return x"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "id": "6Qs-psVgrHQg",
+        "outputId": "43848988-f394-40be-bf09-eb43b177abc0"
+      },
+      "outputs": [
+        {
+          "data": {
+            "text/plain": [
+              "[2, 4, 6]"
+            ]
+          },
+          "execution_count": 10,
+          "metadata": {},
+          "output_type": "execute_result"
+        }
+      ],
+      "source": [
+        "suma_vectores( [1,2,3], [1,2,3] ) #Se suman cada vector pero con sus correspondiente es decir x con x, y con y y z con z."
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "LrNsXxFBrHQg"
+      },
+      "source": [
+        "## Clases"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "vMCM35IYrHQg"
+      },
+      "source": [
+        "- No tomen argumentos\n",
+        "- Muestra enunciados usando el método de inicialización `init`.\n",
+        "- El método para crear clases es `class`."
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "id": "XPff2y3ZrHQg"
+      },
+      "outputs": [],
+      "source": [
+        "class Animal(): #Es la clase madre, para definir siempre despues va init y self con parentesis y le pones un print o un return\n",
+        "#En el print te va a aparecer lo que tu pongas en parentesis\n",
+        "\n",
+        "    def _init_(self):\n",
+        "        print(\"creamos una clase\")\n",
+        "\n",
+        "    def adivina(self):\n",
+        "        print(\"Hola, soy un animal\")\n",
+        "\n",
+        "    def escribir(self):\n",
+        "        print(\"Estoy escribiendo\")"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "id": "IITa2dDKrHQg"
+      },
+      "outputs": [],
+      "source": []
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "id": "rLonpJGnrHQh",
+        "outputId": "00409179-6ff2-48ad-bc2f-88443a57d6b8"
+      },
+      "outputs": [
+        {
+          "data": {
+            "text/plain": [
+              "__main__.Animal"
+            ]
+          },
+          "execution_count": 12,
+          "metadata": {},
+          "output_type": "execute_result"
+        }
+      ],
+      "source": [
+        "type(Animal()) #Tipo de objeto que es sea animal, letra, nombre yo etc"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "id": "wxB16gYerHQh"
+      },
+      "outputs": [],
+      "source": [
+        "animal = Animal()"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "id": "nyqC5jbtrHQh",
+        "outputId": "24d279ec-660e-4938-9e4c-5854b83ff866"
+      },
+      "outputs": [
+        {
+          "name": "stdout",
+          "output_type": "stream",
+          "text": [
+            "Hola, soy un animal\n"
+          ]
+        }
+      ],
+      "source": [
+        "animal.adivina()"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "id": "j3oYhT21rHQh",
+        "outputId": "6b6e89ab-5de7-4151-b026-2ebe41e178a3"
+      },
+      "outputs": [
+        {
+          "name": "stdout",
+          "output_type": "stream",
+          "text": [
+            "Estoy escribiendo\n"
+          ]
+        }
+      ],
+      "source": [
+        "animal.escribir()"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "f9fhVjpnrHQh"
+      },
+      "source": [
+        "## Herencia"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "eVAMtIuhrHQh"
+      },
+      "source": [
+        "Crear nuevas clases inherentes a métodos de la \"clase base\"."
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "id": "ndzWVnELrHQh"
+      },
+      "outputs": [],
+      "source": [
+        "class Perro(Animal): #Una herencia es un subconjunto de la clase madre\n",
+        "\n",
+        "    def __init__(self):\n",
+        "        Animal._init_(self)\n",
+        "        print(\"Creamos una clase Perro\")\n",
+        "\n",
+        "    def adivina(self): #wuaw, adivina es como tu llamas a la clase y le pones despues print y cuando pongas def y como le llamaste\n",
+        "    #a tu clase te va a imprimir lo que pones en el parentesis de print.\n",
+        "        print(\"Soy Cleto\")\n",
+        "\n",
+        "    def wuaw(self):\n",
+        "        print(\"WUAU\")"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "source": [],
+      "metadata": {
+        "id": "vCom2dENxp9l"
+      },
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "id": "oJ9NjUTfrHQi",
+        "outputId": "fe043054-bb3c-49db-9c1b-b15f440700bb"
+      },
+      "outputs": [
+        {
+          "name": "stdout",
+          "output_type": "stream",
+          "text": [
+            "creamos una clase\n",
+            "Creamos una clase Perro\n"
+          ]
+        }
+      ],
+      "source": [
+        "perro = Perro() #defines la clase herencia porque la clase madre es animal y pones el nombre de la herencia = nombre de la herencia\n",
+        "#en mayuscula  y asi creas la clase"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "id": "Qk4tIszerHQi",
+        "outputId": "284f50df-22d7-41de-c665-a08a8d2d9f2e"
+      },
+      "outputs": [
+        {
+          "data": {
+            "text/plain": [
+              "<__main__.Perro at 0x7fc3aeaaed00>"
+            ]
+          },
+          "execution_count": 18,
+          "metadata": {},
+          "output_type": "execute_result"
+        }
+      ],
+      "source": [
+        "perro"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "id": "dtL4ZeyKrHQi",
+        "outputId": "93dda8e4-3acd-42cf-ffcc-2843eac74220"
+      },
+      "outputs": [
+        {
+          "name": "stdout",
+          "output_type": "stream",
+          "text": [
+            "Hola, soy un animal\n",
+            "None\n",
+            "Soy Cleto\n",
+            "None\n"
+          ]
+        }
+      ],
+      "source": [
+        "print(animal.adivina())\n",
+        "print(perro.adivina())"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "id": "W6Z5lhb8rHQi",
+        "outputId": "b477656f-57d1-4b9c-b004-aeff3a376cd4"
+      },
+      "outputs": [
+        {
+          "name": "stdout",
+          "output_type": "stream",
+          "text": [
+            "WUAU\n"
+          ]
+        }
+      ],
+      "source": [
+        "perro.wuaw()"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "id": "YF6nfpG0rHQi",
+        "outputId": "e364a633-86b0-4e0d-a4c1-5b0f1ea4e19f"
+      },
+      "outputs": [
+        {
+          "name": "stdout",
+          "output_type": "stream",
+          "text": [
+            "Soy Cleto\n"
+          ]
+        }
+      ],
+      "source": [
+        "perro.adivina()"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "bT-ZKxvcrHQi"
+      },
+      "source": [
+        "### Ejemplo"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "id": "AHeY01W3rHQi"
+      },
+      "outputs": [],
+      "source": [
+        "class Fecha():\n",
+        "\n",
+        "    def _init_(self):\n",
+        "        print(\"creamos una clase que da la fecha\")\n",
+        "\n",
+        "    def fecha(self):\n",
+        "        return \"2024-15-01\"\n"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "id": "TnbqWq0-rHQj"
+      },
+      "outputs": [],
+      "source": [
+        "f = Fecha() #Almacenas e inicializas la clase creas una variable"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "id": "DqI49nAHrHQj",
+        "outputId": "d010026a-0e4a-474a-83ea-ee8fe8c06e24"
+      },
+      "outputs": [
+        {
+          "data": {
+            "text/plain": [
+              "'2022-25-08'"
+            ]
+          },
+          "execution_count": 24,
+          "metadata": {},
+          "output_type": "execute_result"
+        }
+      ],
+      "source": [
+        "f.fecha() #Te da la fecha que le pusiste print"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "id": "V38tHADjrHQj"
+      },
+      "outputs": [],
+      "source": [
+        "class Tiempo(Fecha): #Claswe heredada\n",
+        "\n",
+        "    def _init_(self):\n",
+        "        Fecha._init_(self)\n",
+        "        print(\"Creamos una clase Tiempo\")\n",
+        "\n",
+        "    def hora(self):\n",
+        "        return \"7:00\""
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "id": "VdIbSawHrHQj",
+        "outputId": "070662cd-998a-4139-a79f-72849a783abf"
+      },
+      "outputs": [
+        {
+          "data": {
+            "text/plain": [
+              "'7:00'"
+            ]
+          },
+          "execution_count": 26,
+          "metadata": {},
+          "output_type": "execute_result"
+        }
+      ],
+      "source": [
+        "t = Tiempo() #defines la variable con la letra t\n",
+        "\n",
+        "t.hora() #te da el return de la variable"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "aulKEFl8rHQj"
+      },
+      "source": [
+        "### Métodos objeto"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "dp-cd425rHQj"
+      },
+      "source": [
+        "`_init_` inicializa la clase base.\n",
+        "`__init__` inicializa la clase base y sirve como constructor. Ojo: se ponen dos guiones abajo al principio y al final."
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "id": "ThcCeFVdrHQj"
+      },
+      "outputs": [],
+      "source": [
+        "class Persona(): #clase madre\n",
+        "\n",
+        "    def __init__(self, nombre): #el argumento es nombre\n",
+        "        self.nombre = nombre\n",
+        "\n",
+        "    def greet(self): #estoy definiendo greet es un saludo\n",
+        "        print(\"Hola, mi nombre es\", self.nombre)"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "id": "__t9xG28rHQk"
+      },
+      "outputs": [],
+      "source": [
+        "p = Persona(\"Aarón\") #Ingreso la variable"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "id": "LPKdyYCBrHQk",
+        "outputId": "cc92a9a3-49b4-4065-9b00-a1d5eba4a564"
+      },
+      "outputs": [
+        {
+          "name": "stdout",
+          "output_type": "stream",
+          "text": [
+            "Hola, mi nombre es Aarón\n"
+          ]
+        }
+      ],
+      "source": [
+        "p.greet()"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "id": "N0-U4jmWrHQk"
+      },
+      "outputs": [],
+      "source": [
+        "class Complex(): #Una definicion que tiene un inicializador, el primer argumento es self antes cerrabamos con parentesis pero ahora como es complex\n",
+        "#Va a tener mas argumentos, ya sean listas o numeros, le tenemos que poner real e imaginaria, podemos poner los argumentos que queramos.\n",
+        "#Despues defines los argumentos, con el self llamas a los elementos de la clase madre y debes de poner self.r=real\n",
+        "\n",
+        "    def __init__(self, real, imaginaria):\n",
+        "        self.r = real\n",
+        "        self.i = imaginaria"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "id": "oD84VSxirHQk"
+      },
+      "outputs": [],
+      "source": [
+        "z = Complex(3.0,4.0) #Ya tienes una clase inicializada puedes crear matrices y tienes que definir los complejos e imaginarios."
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "id": "8jLfNq1orHQk",
+        "outputId": "da08ac49-2b6f-4acd-f647-e31b8197cbbc"
+      },
+      "outputs": [
+        {
+          "data": {
+            "text/plain": [
+              "3.0"
+            ]
+          },
+          "execution_count": 32,
+          "metadata": {},
+          "output_type": "execute_result"
+        }
+      ],
+      "source": [
+        "z.r #defines al real de z= complex"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "id": "f8gO0qyZrHQl",
+        "outputId": "bc8e052a-1338-4226-e220-5afdea51c153"
+      },
+      "outputs": [
+        {
+          "data": {
+            "text/plain": [
+              "4.0"
+            ]
+          },
+          "execution_count": 33,
+          "metadata": {},
+          "output_type": "execute_result"
+        }
+      ],
+      "source": [
+        "z.i"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "id": "RlH7D0C5rHQl"
+      },
+      "outputs": [],
+      "source": [
+        "class Perro(): #clase madre\n",
+        "\n",
+        "    animal = \"perrito\" #defino la variable que se llama perrrito\n",
+        "\n",
+        "    def __init__(self, Raza, Color, Edad): #tienes que definir todos los argumentos\n",
+        "        self.Raza = Raza #self.r = raza estas definienido el argumento\n",
+        "        self.Color = Color\n",
+        "        self.Edad = Edad\n"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "id": "3XmcyuaurHQl"
+      },
+      "outputs": [],
+      "source": [
+        "Cleto = Perro(\"Pug\", \"beige\", \"viejito\") #Estas definiendo variable cleto"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "id": "nz5-UyUtrHQl",
+        "outputId": "307206a1-74ef-4ff9-a691-d4bbd1cc7663"
+      },
+      "outputs": [
+        {
+          "name": "stdout",
+          "output_type": "stream",
+          "text": [
+            "Cleto detalles:\n",
+            "Cleto es un perrito\n",
+            "La raza de Cleto es Pug\n",
+            "El color de Cleto es beige\n",
+            "La edad de Cleto es viejito\n"
+          ]
+        }
+      ],
+      "source": [
+        "print(\"Cleto detalles:\") #imprime las variables que definiste arriba raza 1 color 2 y edad 3\n",
+        "\n",
+        "print(\"Cleto es un\", Cleto.animal)\n",
+        "\n",
+        "print(\"La raza de Cleto es\", Cleto.Raza)\n",
+        "\n",
+        "print(\"El color de Cleto es\", Cleto.Color)\n",
+        "\n",
+        "print(\"La edad de Cleto es\", Cleto.Edad)"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "ya-c5WwRrHQl"
+      },
+      "source": [
+        "## Otro ejemplo"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": 1,
+      "metadata": {
+        "id": "-O6oCpIArHQl"
+      },
+      "outputs": [],
+      "source": [
+        "class Empleados(): #clase madre\n",
+        "\n",
+        "    Conteo = 0 #conteo global se inicia en cero\n",
+        "\n",
+        "\n",
+        "    def __init__(self, nombre, salario): #argumentos que tenemos que definir\n",
+        "        self.nombre = nombre\n",
+        "        self.salario = salario\n",
+        "        Empleados.Conteo += 1 #imprimes el conteo\n",
+        "\n",
+        "    def conteo(self):\n",
+        "        print(\"Empleados %d\" % Empleados.Conteo) #% d te imprime los numeros como si fueran string las palabras entre comillas\n",
+        "\n",
+        "\n",
+        "    def empleado(self):\n",
+        "        print(\"Nombre:\", self.nombre, \",Salario:\", self.salario) #pones informacion de cada empleado"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": 2,
+      "metadata": {
+        "id": "_-VfeReKrHQm"
+      },
+      "outputs": [],
+      "source": [
+        "emp1 = Empleados(\"Carlos\", 10000) #defines las variables (empleados)"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": 3,
+      "metadata": {
+        "id": "42H-_UsmrHQm"
+      },
+      "outputs": [],
+      "source": [
+        "emp2 = Empleados(\"Esteban\", 30000)"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": 4,
+      "metadata": {
+        "id": "JTK5tvKerHQm",
+        "outputId": "3663f07d-9547-4a9b-f051-60bcfc1a0d8f",
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        }
+      },
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stdout",
+          "text": [
+            "Nombre: Esteban ,Salario: 30000\n"
+          ]
+        }
+      ],
+      "source": [
+        "emp2.empleado() #variable 2 definindo empelado (self)"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": 5,
+      "metadata": {
+        "id": "I1zbKIvgrHQm",
+        "outputId": "b3991f81-6564-416e-9a24-3ecd5b7f5f2a",
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        }
+      },
+      "outputs": [
+        {
+          "output_type": "execute_result",
+          "data": {
+            "text/plain": [
+              "2"
+            ]
+          },
+          "metadata": {},
+          "execution_count": 5
+        }
+      ],
+      "source": [
+        "Empleados.Conteo"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": 7,
+      "metadata": {
+        "id": "66tloWY4rHQm",
+        "outputId": "7aba6bca-69b5-45e0-e854-b7d91bfc9671",
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        }
+      },
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stdout",
+          "text": [
+            "Total de empleados 6\n"
+          ]
+        }
+      ],
+      "source": [
+        "emp3 = Empleados(\"Nat\", 10000)\n",
+        "emp4 = Empleados(\"Esteve\", 30000)\n",
+        "\n",
+        "print(\"Total de empleados %d\" % Empleados.Conteo)"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "AvV1KNjRrHQm"
+      },
+      "source": [
+        "## Clases, herencias y polimorfismos"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": 17,
+      "metadata": {
+        "id": "8emfc6qOrHQm"
+      },
+      "outputs": [],
+      "source": [
+        "class Person: #clase madre\n",
+        "\n",
+        "    def __init__(self, last_name, first_name, age): #defines los argumentos\n",
+        "        self.__last_name = last_name #cuando tienes los dos guiones bajo es para cuando usas strings \"palabras\" y numeros\n",
+        "        self.__first_name = first_name\n",
+        "        self.__age = age\n",
+        "\n",
+        "    @property #es una funcion magica que usas para que te imprima las funciones aunque le pongas return\n",
+        "    def last_name(self):\n",
+        "        return self.__last_name\n",
+        "\n",
+        "    @property\n",
+        "    def first_name(self):\n",
+        "        return self.__first_name\n",
+        "\n",
+        "    @property\n",
+        "    def age(self):\n",
+        "        return self.__age\n",
+        "    @property\n",
+        "    def happy_birthday(self):\n",
+        "        return self.age + 1"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": 18,
+      "metadata": {
+        "id": "CGGdbKDPrHQn",
+        "outputId": "ea901892-3340-4eb7-f145-24fbd008a6ea",
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        }
+      },
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stdout",
+          "text": [
+            "Gal\n",
+            "26\n"
+          ]
+        }
+      ],
+      "source": [
+        "cesar = Person(\"Gal\", \"César\", 25) #defones las variables\n",
+        "print(cesar.last_name)\n",
+        "print(cesar.happy_birthday)"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": 19,
+      "metadata": {
+        "id": "7beysN2irHQn",
+        "outputId": "96a94e56-e7de-4450-d1f2-ccdddb1d9f8d",
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        }
+      },
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stdout",
+          "text": [
+            "True\n",
+            "True\n"
+          ]
+        }
+      ],
+      "source": [
+        "class PrimeNumber: #clase madre\n",
+        "    def __init__(self, number): #defines los argumentos\n",
+        "        self.number = number\n",
+        "\n",
+        "    def is_prime(self): #te dice cuando un numero es primo\n",
+        "        if self.number < 2:\n",
+        "            return False\n",
+        "        for i in range(2, int(self.number ** 0.5) + 1): #si es divisible no es primo\n",
+        "            if self.number % i == 0:\n",
+        "                return False\n",
+        "        return True\n",
+        "\n",
+        "class PositivePrimeNumber(PrimeNumber): #clase heredada\n",
+        "    def __init__(self, number):\n",
+        "        if number <= 0:\n",
+        "            raise ValueError(\"El número debe ser positivo\") #es para marcar error porque solo se pueden positivos\n",
+        "        super().__init__(number)\n",
+        "\n",
+        "\n",
+        "num1 = PrimeNumber(7)\n",
+        "print(num1.is_prime())\n",
+        "\n",
+        "num2 = PositivePrimeNumber(11)\n",
+        "print(num2.is_prime())"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": 20,
+      "metadata": {
+        "id": "Dry4YacrrHQn",
+        "colab": {
+          "base_uri": "https://localhost:8080/",
+          "height": 273
+        },
+        "outputId": "6df0ac0c-ad6b-43a0-a613-0e976a98ebbd"
+      },
+      "outputs": [
+        {
+          "output_type": "error",
+          "ename": "ValueError",
+          "evalue": "El número debe ser positivo",
+          "traceback": [
+            "\u001b[0;31m---------------------------------------------------------------------------\u001b[0m",
+            "\u001b[0;31mValueError\u001b[0m                                Traceback (most recent call last)",
+            "\u001b[0;32m<ipython-input-20-2bcd48e1602e>\u001b[0m in \u001b[0;36m<cell line: 1>\u001b[0;34m()\u001b[0m\n\u001b[0;32m----> 1\u001b[0;31m \u001b[0mPositivePrimeNumber\u001b[0m\u001b[0;34m(\u001b[0m\u001b[0;34m-\u001b[0m\u001b[0;36m1\u001b[0m\u001b[0;34m)\u001b[0m\u001b[0;34m\u001b[0m\u001b[0;34m\u001b[0m\u001b[0m\n\u001b[0m",
+            "\u001b[0;32m<ipython-input-19-9f96eb6d5fa7>\u001b[0m in \u001b[0;36m__init__\u001b[0;34m(self, number)\u001b[0m\n\u001b[1;32m     14\u001b[0m     \u001b[0;32mdef\u001b[0m \u001b[0m__init__\u001b[0m\u001b[0;34m(\u001b[0m\u001b[0mself\u001b[0m\u001b[0;34m,\u001b[0m \u001b[0mnumber\u001b[0m\u001b[0;34m)\u001b[0m\u001b[0;34m:\u001b[0m\u001b[0;34m\u001b[0m\u001b[0;34m\u001b[0m\u001b[0m\n\u001b[1;32m     15\u001b[0m         \u001b[0;32mif\u001b[0m \u001b[0mnumber\u001b[0m \u001b[0;34m<=\u001b[0m \u001b[0;36m0\u001b[0m\u001b[0;34m:\u001b[0m\u001b[0;34m\u001b[0m\u001b[0;34m\u001b[0m\u001b[0m\n\u001b[0;32m---> 16\u001b[0;31m             \u001b[0;32mraise\u001b[0m \u001b[0mValueError\u001b[0m\u001b[0;34m(\u001b[0m\u001b[0;34m\"El número debe ser positivo\"\u001b[0m\u001b[0;34m)\u001b[0m \u001b[0;31m#es para marcar error porque solo se pueden positivos\u001b[0m\u001b[0;34m\u001b[0m\u001b[0;34m\u001b[0m\u001b[0m\n\u001b[0m\u001b[1;32m     17\u001b[0m         \u001b[0msuper\u001b[0m\u001b[0;34m(\u001b[0m\u001b[0;34m)\u001b[0m\u001b[0;34m.\u001b[0m\u001b[0m__init__\u001b[0m\u001b[0;34m(\u001b[0m\u001b[0mnumber\u001b[0m\u001b[0;34m)\u001b[0m\u001b[0;34m\u001b[0m\u001b[0;34m\u001b[0m\u001b[0m\n\u001b[1;32m     18\u001b[0m \u001b[0;34m\u001b[0m\u001b[0m\n",
+            "\u001b[0;31mValueError\u001b[0m: El número debe ser positivo"
+          ]
+        }
+      ],
+      "source": [
+        "PositivePrimeNumber(-1)"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "source": [],
+      "metadata": {
+        "id": "GnBXXjLQ8gMf"
+      },
+      "execution_count": null,
+      "outputs": []
+    }
+  ],
+  "metadata": {
+    "kernelspec": {
+      "display_name": "Python 3 (ipykernel)",
+      "language": "python",
+      "name": "python3"
+    },
+    "language_info": {
+      "codemirror_mode": {
+        "name": "ipython",
+        "version": 3
+      },
+      "file_extension": ".py",
+      "mimetype": "text/x-python",
+      "name": "python",
+      "nbconvert_exporter": "python",
+      "pygments_lexer": "ipython3",
+      "version": "3.9.13"
+    },
+    "colab": {
+      "provenance": []
+    }
+  },
+  "nbformat": 4,
+  "nbformat_minor": 0
+}
